@@ -235,4 +235,30 @@ class CmsController extends Controller
         DB::table('testimonials')->where('id', $id)->delete();
         return back()->with('success', 'Testimonial deleted successfully');
     }
+
+    public function updateLogistics(Request $request)
+    {
+        $keys = ['logistics_title', 'logistics_description', 'logistics_button_text'];
+        
+        foreach ($keys as $key) {
+            if ($request->has($key)) {
+                DB::table('settings')->updateOrInsert(
+                    ['key' => $key],
+                    ['value' => $request->get($key)]
+                );
+            }
+        }
+
+        if ($request->hasFile('logistics_image')) {
+            $path = $this->uploadImageAsWebp($request->file('logistics_image'), 'logistics');
+            if ($path) {
+                DB::table('settings')->updateOrInsert(
+                    ['key' => 'logistics_image'],
+                    ['value' => $path]
+                );
+            }
+        }
+
+        return back()->with('success', 'Logistics section updated successfully');
+    }
 }

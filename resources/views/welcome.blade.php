@@ -39,15 +39,15 @@
                 </a>
 
                 <nav class="hidden md:flex items-center gap-8">
-                    <a href="#" class="text-sm font-medium text-primary font-semibold transition-smooth">Beranda</a>
+                    <a href="#" class="text-sm font-medium text-primary font-semibold transition-smooth">Home</a>
                     <a href="#about"
-                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Tentang</a>
+                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">About</a>
                     <a href="#products"
-                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Produk</a>
+                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Product</a>
                     <a href="#gallery"
-                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Galeri</a>
+                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Gallery</a>
                     <a href="#contact"
-                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Kontak</a>
+                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Contact</a>
                 </nav>
 
                 <div class="hidden md:block">
@@ -76,16 +76,16 @@
             <nav id="mobile-menu" class="hidden md:hidden border-t border-border bg-background">
                 <div class="container-px mx-auto py-4 flex flex-col gap-1">
                     <a href="#"
-                        class="px-3 py-3 rounded-md text-base font-medium bg-accent text-primary font-semibold">Beranda</a>
+                        class="px-3 py-3 rounded-md text-base font-medium bg-accent text-primary font-semibold">Home</a>
                     <a href="#about"
-                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Tentang</a>
+                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">About</a>
                     <a href="#products"
-                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Produk</a>
+                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Product</a>
                     <a href="#gallery"
-                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Galeri</a>
+                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Gallery</a>
                     <a href="#contact"
-                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Kontak</a>
-                    <a href="#" class="btn btn-hero btn-lg mt-2">{{ $hero->primary_button_text ?? 'Hubungi Kami' }}</a>
+                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Contact</a>
+                    <a href="#" class="btn btn-hero btn-lg mt-2">{{ $hero->primary_button_text ?? 'Contact Us' }}</a>
                 </div>
             </nav>
         </header>
@@ -249,7 +249,8 @@
                 <div class="container-px mx-auto max-w-7xl">
                     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
                         <div class="max-w-2xl">
-                            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['gallery_badge'] ?? 'Galeri Verdania' }}</span>
+                            <span
+                                class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['gallery_badge'] ?? 'Galeri Verdania' }}</span>
                             <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary">
                                 {{ $settings['gallery_title'] ?? 'Dedikasi di setiap langkah perjalanan.' }}
                             </h2>
@@ -319,7 +320,8 @@
             <section id="products" class="container-px mx-auto max-w-7xl py-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                     <div>
-                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['products_badge'] ?? 'Komoditas Unggulan' }}</span>
+                        <span
+                            class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['products_badge'] ?? 'Komoditas Unggulan' }}</span>
                         <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary">
                             {{ $settings['products_title'] ?? 'Hasil bumi, dipilih dengan cermat.' }}
                         </h2>
@@ -359,14 +361,13 @@
                                 <path d="M12 7h3" />
                             </svg>
                             <h2 class="font-display text-3xl md:text-5xl font-semibold leading-tight">
-                                Siap mengirim ke pelabuhan Anda.
+                                {{ $settings['logistics_title'] ?? 'Siap mengirim ke pelabuhan Anda.' }}
                             </h2>
                             <p class="mt-5 text-primary-foreground/80 leading-relaxed max-w-md">
-                                Tim ekspor kami menangani dokumentasi, fumigasi, dan pengapalan—FOB hingga DDP.
-                                Sampaikan kebutuhan Anda, kami siapkan penawaran dalam 24 jam.
+                                {{ $settings['logistics_description'] ?? 'Tim ekspor kami menangani dokumentasi, fumigasi, dan pengapalan—FOB hingga DDP. Sampaikan kebutuhan Anda, kami siapkan penawaran dalam 24 jam.' }}
                             </p>
                             <a href="#" class="btn btn-gold btn-lg mt-8">
-                                Mulai Berdagang
+                                {{ $settings['logistics_button_text'] ?? 'Mulai Berdagang' }}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
@@ -376,26 +377,25 @@
                             </a>
                         </div>
                         <div class="relative h-72 md:h-full min-h-[400px]">
-                            <img src="{{ asset('images/logistics.jpg') }}" alt="Kapal kontainer ekspor" loading="lazy"
+                            <img src="{{ asset($settings['logistics_image'] ?? 'images/logistics.jpg') }}"
+                                alt="Kapal kontainer ekspor" loading="lazy"
                                 class="absolute inset-0 h-full w-full object-cover">
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- CONTACT SECTION -->
-            <section id="contact" class="py-24 bg-background">
+            <!-- CONTACT -->
+            <section id="contact" class="bg-background py-24 overflow-hidden">
                 <div class="container-px mx-auto max-w-7xl">
-                    <div class="grid lg:grid-cols-2 gap-16 items-start">
-                        <!-- Contact Info -->
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Hubungi Kami</span>
-                            <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary leading-tight">
-                                Mari diskusikan kemitraan strategis Anda.
+                            <span
+                                class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['contact_badge'] ?? 'Hubungi Kami' }}</span>
+                            <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary">
+                                {{ $settings['contact_title'] ?? 'Mari diskusikan kemitraan strategis Anda.' }}
                             </h2>
                             <p class="mt-6 text-muted-foreground leading-relaxed">
-                                Apakah Anda mencari supplier jangka panjang atau membutuhkan penawaran harga untuk
-                                pengiriman tunggal? Tim kami siap memberikan solusi terbaik untuk kebutuhan komoditas
-                                Anda.
+                                {{ $settings['contact_description'] ?? 'Apakah Anda mencari supplier jangka panjang atau membutuhkan penawaran harga untuk pengiriman tunggal? Tim kami siap memberikan solusi terbaik untuk kebutuhan komoditas Anda.' }}
                             </p>
 
                             <div class="mt-12 space-y-8">
@@ -410,8 +410,10 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 class="font-semibold text-primary">Telepon / WhatsApp</h4>
-                                        <p class="text-muted-foreground">{{ $settings['contact_phone'] ?? '-' }}</p>
+                                        <div class="text-sm font-semibold text-primary uppercase tracking-wider">Telepon
+                                        </div>
+                                        <div class="mt-1 text-muted-foreground">{{ $settings['contact_phone'] ?? '' }}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -426,8 +428,10 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 class="font-semibold text-primary">Email Resmi</h4>
-                                        <p class="text-muted-foreground">{{ $settings['contact_email'] ?? '-' }}</p>
+                                        <div class="text-sm font-semibold text-primary uppercase tracking-wider">Email
+                                        </div>
+                                        <div class="mt-1 text-muted-foreground">{{ $settings['contact_email'] ?? '' }}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -442,8 +446,10 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 class="font-semibold text-primary">Kantor Operasional</h4>
-                                        <p class="text-muted-foreground">{{ $settings['contact_address'] ?? '-' }}</p>
+                                        <div class="text-sm font-semibold text-primary uppercase tracking-wider">Kantor
+                                        </div>
+                                        <div class="mt-1 text-muted-foreground">{{ $settings['contact_address'] ?? '' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -469,17 +475,17 @@
                                 <div class="space-y-2">
                                     <label for="subject" class="text-sm font-semibold text-primary">Subjek Pesan</label>
                                     <input type="text" id="subject" name="subject"
-                                        placeholder="Permintaan Quota Harga FOB"
+                                        placeholder="FOB Price Quotation Request"
                                         class="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-gold focus:border-gold transition-smooth outline-none">
                                 </div>
                                 <div class="space-y-2">
                                     <label for="message" class="text-sm font-semibold text-primary">Pesan Anda</label>
                                     <textarea id="message" name="message" rows="4"
-                                        placeholder="Jelaskan kebutuhan volume dan tujuan pengiriman Anda..."
+                                        placeholder="Please specify your required volume and shipment destination..."
                                         class="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-gold focus:border-gold transition-smooth outline-none resize-none"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-gold btn-xl w-full justify-center">
-                                    Kirim Pesan
+                                    Send Message
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round">
@@ -521,10 +527,10 @@
                 <div>
                     <h4 class="font-display text-base font-semibold text-gold mb-4">Navigasi</h4>
                     <ul class="space-y-2 text-sm text-primary-foreground/80">
-                        <li><a href="#about" class="hover:text-gold transition-smooth">Tentang Kami</a></li>
-                        <li><a href="#products" class="hover:text-gold transition-smooth">Produk</a></li>
-                        <li><a href="#gallery" class="hover:text-gold transition-smooth">Galeri</a></li>
-                        <li><a href="#contact" class="hover:text-gold transition-smooth">Kontak</a></li>
+                        <li><a href="#about" class="hover:text-gold transition-smooth">About Us</a></li>
+                        <li><a href="#products" class="hover:text-gold transition-smooth">Product</a></li>
+                        <li><a href="#gallery" class="hover:text-gold transition-smooth">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-gold transition-smooth">Contact</a></li>
                     </ul>
                 </div>
 
