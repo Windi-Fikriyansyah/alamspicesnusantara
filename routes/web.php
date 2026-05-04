@@ -4,7 +4,8 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\CmsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [LandingPageController::class, 'index']);
+Route::get('/', [LandingPageController::class, 'index'])->name('welcome');
+Route::get('/product/{slug}', [CmsController::class, 'showProduct'])->name('product.detail');
 
 Route::prefix('admin')
     ->middleware('auth')

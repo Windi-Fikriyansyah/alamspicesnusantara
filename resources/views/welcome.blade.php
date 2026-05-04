@@ -330,17 +330,19 @@
 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     @foreach($products as $product)
-                        <a href="{{ $product->link }}"
-                            class="group block rounded-2xl overflow-hidden bg-background border border-border hover:shadow-elegant transition-smooth">
+                        <div class="group block rounded-2xl overflow-hidden bg-background border border-border hover:shadow-elegant transition-smooth">
                             <div class="aspect-square overflow-hidden bg-cream">
                                 <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" loading="lazy"
                                     class="h-full w-full object-cover group-hover:scale-105 transition-smooth">
                             </div>
                             <div class="p-5">
                                 <h3 class="font-display text-lg font-semibold text-primary">{{ $product->name }}</h3>
-                                <p class="text-sm text-muted-foreground mt-1">{{ $product->category }}</p>
+                                <div class="flex items-center justify-between mt-1">
+                                    <p class="text-sm text-muted-foreground">{{ $product->category }}</p>
+                                    <a href="{{ route('product.detail', $product->slug) }}" class="text-sm font-semibold text-gold hover:underline">See Detail →</a>
+                                </div>
                             </div>
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             </section>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CmsController extends Controller
 {
@@ -15,7 +16,13 @@ class CmsController extends Controller
         $stats = DB::table('stats')->orderBy('order')->get();
         $about = DB::table('about_sections')->first();
         $features = DB::table('features')->orderBy('order')->get();
-        $products = DB::table('products')->orderBy('order')->get();
+        
+        $products = DB::table('products')
+            ->leftJoin('product_details', 'products.id', '=', 'product_details.product_id')
+            ->select('products.*', 'product_details.description', 'product_details.specifications', 'product_details.origin', 'product_details.packaging', 'product_details.shipping_terms')
+            ->orderBy('order')
+            ->get();
+
         $galleries = DB::table('galleries')->orderBy('order')->get();
         $testimonials = DB::table('testimonials')->orderBy('order')->get();
 
@@ -112,35 +119,61 @@ class CmsController extends Controller
     // CRUD for Products
     public function storeProduct(Request $request)
     {
-        $data = $request->only(['name', 'category', 'order']);
+        $productData = $request->only(['name', 'category', 'order']);
+        $productData['slug'] = Str::slug($request->name);
         
         if ($request->hasFile('image')) {
             $path = $this->uploadImageAsWebp($request->file('image'), 'product');
-            if ($path) $data['image'] = $path;
+            if ($path) $productData['image'] = $path;
         }
 
-        DB::table('products')->insert($data);
+        $productId = DB::table('products')->insertGetId($productData);
 
-        return back()->with('success', 'Product added successfully');
+        DB::table('product_details')->insert([
+            'product_id' => $productId,
+            'description' => $request->description,
+            'specifications' => $request->specifications,
+            'origin' => $request->origin,
+            'packaging' => $request->packaging,
+            'shipping_terms' => $request->shipping_terms,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return back()->with('success', 'Product and details added successfully');
     }
 
     public function updateProduct(Request $request, $id)
     {
-        $data = $request->only(['name', 'category', 'order']);
+        $productData = $request->only(['name', 'category', 'order']);
+        $productData['slug'] = Str::slug($request->name);
 
         if ($request->hasFile('image')) {
             $path = $this->uploadImageAsWebp($request->file('image'), 'product');
-            if ($path) $data['image'] = $path;
+            if ($path) $productData['image'] = $path;
         }
 
-        DB::table('products')->where('id', $id)->update($data);
+        DB::table('products')->where('id', $id)->update($productData);
 
-        return back()->with('success', 'Product updated successfully');
+        DB::table('product_details')->updateOrInsert(
+            ['product_id' => $id],
+            [
+                'description' => $request->description,
+                'specifications' => $request->specifications,
+                'origin' => $request->origin,
+                'packaging' => $request->packaging,
+                'shipping_terms' => $request->shipping_terms,
+                'updated_at' => now(),
+            ]
+        );
+
+        return back()->with('success', 'Product and details updated successfully');
     }
 
     public function deleteProduct($id)
     {
         DB::table('products')->where('id', $id)->delete();
+        // Details will be deleted by cascade if foreign key is set correctly
         return back()->with('success', 'Product deleted successfully');
     }
 
@@ -260,5 +293,21 @@ class CmsController extends Controller
         }
 
         return back()->with('success', 'Logistics section updated successfully');
+    }
+
+    public function showProduct($slug)
+    {
+        $product = DB::table('products')
+            ->leftJoin('product_details', 'products.id', '=', 'product_details.product_id')
+            ->select('products.*', 'product_details.description', 'product_details.specifications', 'product_details.origin', 'product_details.packaging', 'product_details.shipping_terms')
+            ->where('products.slug', $slug)
+            ->first();
+
+        if (!$product) abort(404);
+
+        $settings = DB::table('settings')->pluck('value', 'key')->all();
+        $hero = DB::table('hero_sections')->first();
+
+        return view('products.detail', compact('product', 'settings', 'hero'));
     }
 }
