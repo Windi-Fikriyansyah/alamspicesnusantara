@@ -45,6 +45,7 @@ Route::prefix('admin')
         Route::post('/testimonials', [CmsController::class, 'storeTestimonial'])->name('admin.testimonials.store');
         Route::post('/testimonials/{id}', [CmsController::class, 'updateTestimonial'])->name('admin.testimonials.update');
         Route::delete('/testimonials/{id}', [CmsController::class, 'deleteTestimonial'])->name('admin.testimonials.delete');
+        Route::post('/logistics', [CmsController::class, 'updateLogistics'])->name('admin.logistics.update');
 
     });
 
