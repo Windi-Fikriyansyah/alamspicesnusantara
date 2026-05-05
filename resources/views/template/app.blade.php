@@ -37,7 +37,7 @@
                   <i class="bx bx-target-lock text-white fs-4"></i>
                 </div>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Wamaps</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Alam Herbal Nusantara</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

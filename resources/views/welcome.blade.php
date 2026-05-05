@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $settings['site_name'] ?? 'Verdania Exports' }} — {{ $settings['site_tagline'] ?? 'Ekspor Rempah' }}
+    <title>{{ $settings['site_name'] ?? 'Alam Herbal Nusantara' }} — {{ $settings['site_tagline'] ?? 'Ekspor Rempah' }}
     </title>
     <meta name="description" content="{{ $settings['site_description'] ?? '' }}">
 
@@ -34,7 +34,7 @@
                         </svg>
                     </span>
                     <span class="font-display text-xl font-semibold text-primary">
-                        Verdania <span class="text-gold">Exports</span>
+                        Alam Herbal <span class="text-gold">Nusantara</span>
                     </span>
                 </a>
 
@@ -193,7 +193,7 @@
                 <div class="container-px mx-auto max-w-7xl py-24">
                     <div class="text-center max-w-2xl mx-auto">
                         <span
-                            class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['features_badge'] ?? 'Mengapa Verdania' }}</span>
+                            class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['features_badge'] ?? 'Mengapa Alam Herbal Nusantara' }}</span>
                         <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary">
                             {{ $settings['features_title'] ?? 'Keunggulan yang dipercaya importir dunia' }}
                         </h2>
@@ -254,7 +254,7 @@
                     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
                         <div class="max-w-2xl">
                             <span
-                                class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['gallery_badge'] ?? 'Galeri Verdania' }}</span>
+                                class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['gallery_badge'] ?? 'Galeri Alam Herbal' }}</span>
                             <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary">
                                 {{ $settings['gallery_title'] ?? 'Dedikasi di setiap langkah perjalanan.' }}
                             </h2>
@@ -579,7 +579,7 @@
                             </svg>
                         </span>
                         <span class="font-display text-xl font-semibold">
-                            Verdania <span class="text-gold">Exports</span>
+                            Alam Herbal <span class="text-gold">Nusantara</span>
                         </span>
                     </a>
                     <p class="mt-4 max-w-md text-sm text-primary-foreground/70 leading-relaxed">

@@ -21,13 +21,13 @@ class LandingPageSeeder extends Seeder
     {
         // Site Settings
         $settings = [
-            'site_name' => 'Verdania Exports',
+            'site_name' => 'Alam Herbal Nusantaraports',
             'site_tagline' => 'Exports — Ekspor Rempah & Hasil Pertanian Premium',
             'site_description' => 'Eksportir tepercaya rempah dan hasil pertanian Indonesia: kopi, kakao, cengkeh, lada, dan pala ke pasar global dengan standar kualitas internasional.',
             'contact_email' => 'trade@verdania.co.id',
             'contact_phone' => '+62 857-1493-2577',
             'contact_address' => 'Jakarta Selatan, Indonesia',
-            'footer_copy' => '© ' . date('Y') . ' Verdania Exports. Seluruh hak dilindungi.',
+            'footer_copy' => '© ' . date('Y') . ' Alam Herbal Nusantaraports. Seluruh hak dilindungi.',
             'footer_cert' => 'Bersertifikat ISO 22000 · HACCP · Organic EU',
         ];
 
