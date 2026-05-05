@@ -92,7 +92,12 @@
     .btn {
         @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
     }
-    .btn-default { @apply bg-primary text-primary-foreground shadow hover:bg-primary/90; }
+    .btn-default { 
+        @apply bg-primary text-primary-foreground shadow; 
+    }
+    .btn-default:hover {
+        background-color: oklch(from var(--primary) l c h / 0.9);
+    }
     .btn-outline { @apply border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground; }
     
     .btn-hero { 
@@ -112,7 +117,10 @@
     
     .btn-outline-light { 
         transition: var(--transition-smooth);
-        @apply border border-white/40 text-white hover:bg-white/10 backdrop-blur-sm; 
+        @apply border border-white/40 text-white backdrop-blur-sm; 
+    }
+    .btn-outline-light:hover {
+        background-color: rgba(255, 255, 255, 0.1);
     }
     
     .btn-lg { @apply h-12 rounded-md px-8 text-base; }
