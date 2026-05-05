@@ -509,7 +509,7 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <div class="text-sm font-semibold text-primary uppercase tracking-wider">Kantor
+                                        <div class="text-sm font-semibold text-primary uppercase tracking-wider">Office
                                         </div>
                                         <div class="mt-1 text-muted-foreground">{{ $settings['contact_address'] ?? '' }}
                                         </div>
