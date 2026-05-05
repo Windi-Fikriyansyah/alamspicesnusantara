@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\Gallery;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LandingPageController extends Controller
 {
@@ -24,6 +25,7 @@ class LandingPageController extends Controller
         $products = Product::orderBy('order')->get();
         $galleries = Gallery::orderBy('order')->get();
         $testimonials = Testimonial::orderBy('order')->get();
+        $blogs = DB::table('blogs')->where('is_published', true)->orderBy('published_at', 'desc')->take(3)->get();
 
         return view('welcome', compact(
             'settings',
@@ -33,7 +35,19 @@ class LandingPageController extends Controller
             'features',
             'products',
             'galleries',
-            'testimonials'
+            'testimonials',
+            'blogs'
         ));
+    }
+
+    public function showBlog($slug)
+    {
+        $blog = DB::table('blogs')->where('slug', $slug)->first();
+        if (!$blog) abort(404);
+
+        $settings = Setting::pluck('value', 'key');
+        $hero = HeroSection::first(); // Needed for header if it uses it
+
+        return view('blog.detail', compact('blog', 'settings', 'hero'));
     }
 }

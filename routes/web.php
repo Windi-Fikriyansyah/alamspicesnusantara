@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('welcome');
 Route::get('/product/{slug}', [CmsController::class, 'showProduct'])->name('product.detail');
+Route::get('/blog/{slug}', [LandingPageController::class, 'showBlog'])->name('blog.detail');
 
 Route::prefix('admin')
     ->middleware('auth')
@@ -47,6 +48,16 @@ Route::prefix('admin')
         Route::post('/testimonials/{id}', [CmsController::class, 'updateTestimonial'])->name('admin.testimonials.update');
         Route::delete('/testimonials/{id}', [CmsController::class, 'deleteTestimonial'])->name('admin.testimonials.delete');
         Route::post('/logistics', [CmsController::class, 'updateLogistics'])->name('admin.logistics.update');
+
+        // Blog CMS (Separate)
+        Route::get('/blog', [\App\Http\Controllers\Admin\BlogController::class, 'index'])->name('admin.blog.index');
+        Route::get('/blog/create', [\App\Http\Controllers\Admin\BlogController::class, 'create'])->name('admin.blog.create');
+        Route::post('/blog', [\App\Http\Controllers\Admin\BlogController::class, 'store'])->name('admin.blog.store');
+        Route::post('/blog/generate-ai', [\App\Http\Controllers\Admin\BlogController::class, 'generateAi'])->name('admin.blog.generate-ai');
+        Route::post('/blog/settings', [\App\Http\Controllers\Admin\BlogController::class, 'updateSettings'])->name('admin.blog.settings.update');
+        Route::get('/blog/{id}/edit', [\App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin.blog.edit');
+        Route::post('/blog/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin.blog.update');
+        Route::delete('/blog/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'destroy'])->name('admin.blog.delete');
 
     });
 

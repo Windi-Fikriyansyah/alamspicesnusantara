@@ -46,6 +46,8 @@
                         class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Product</a>
                     <a href="#gallery"
                         class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Gallery</a>
+                    <a href="#blog"
+                        class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Blog</a>
                     <a href="#contact"
                         class="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth">Contact</a>
                 </nav>
@@ -83,6 +85,8 @@
                         class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Product</a>
                     <a href="#gallery"
                         class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Gallery</a>
+                    <a href="#blog"
+                        class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Blog</a>
                     <a href="#contact"
                         class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Contact</a>
                     <a href="#" class="btn btn-hero btn-lg mt-2">{{ $hero->primary_button_text ?? 'Contact Us' }}</a>
@@ -330,7 +334,8 @@
 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     @foreach($products as $product)
-                        <div class="group block rounded-2xl overflow-hidden bg-background border border-border hover:shadow-elegant transition-smooth">
+                        <div
+                            class="group block rounded-2xl overflow-hidden bg-background border border-border hover:shadow-elegant transition-smooth">
                             <div class="aspect-square overflow-hidden bg-cream">
                                 <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" loading="lazy"
                                     class="h-full w-full object-cover group-hover:scale-105 transition-smooth">
@@ -339,7 +344,8 @@
                                 <h3 class="font-display text-lg font-semibold text-primary">{{ $product->name }}</h3>
                                 <div class="flex items-center justify-between mt-1">
                                     <p class="text-sm text-muted-foreground">{{ $product->category }}</p>
-                                    <a href="{{ route('product.detail', $product->slug) }}" class="text-sm font-semibold text-gold hover:underline">See Detail →</a>
+                                    <a href="{{ route('product.detail', $product->slug) }}"
+                                        class="text-sm font-semibold text-gold hover:underline">See Detail →</a>
                                 </div>
                             </div>
                         </div>
@@ -386,6 +392,61 @@
                     </div>
                 </div>
             </section>
+            <!-- BLOG -->
+            <section id="blog" class="py-24 bg-cream border-y border-border">
+                <div class="container-px mx-auto max-w-7xl">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+                        <div class="max-w-2xl">
+                            <span
+                                class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['blog_badge'] ?? 'Update Terbaru' }}</span>
+                            <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary">
+                                {{ $settings['blog_title'] ?? 'Wawasan dari Industri Rempah.' }}
+                            </h2>
+                        </div>
+                        <p class="text-muted-foreground max-w-sm">
+                            {{ $settings['blog_description'] ?? 'Berita terbaru, tips pemilihan komoditas, dan cerita dari balik layar perjalanan ekspor kami.' }}
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        @foreach($blogs as $blog)
+                            <div
+                                class="group bg-background rounded-2xl overflow-hidden shadow-soft hover:shadow-elegant transition-smooth border border-border/50">
+                                <div class="aspect-[16/10] overflow-hidden">
+                                    <img src="{{ asset($blog->image ?? 'images/blog-placeholder.jpg') }}"
+                                        alt="{{ $blog->title }}"
+                                        class="h-full w-full object-cover group-hover:scale-105 transition-smooth duration-500">
+                                </div>
+                                <div class="p-8">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-2 py-1 rounded">Blog</span>
+                                        <span
+                                            class="text-xs text-muted-foreground">{{ date('d M Y', strtotime($blog->published_at)) }}</span>
+                                    </div>
+                                    <h3 class="font-display text-xl font-semibold text-primary mb-3 line-clamp-2">
+                                        {{ $blog->title }}
+                                    </h3>
+                                    <p class="text-sm text-muted-foreground line-clamp-3 mb-6">
+                                        {{ $blog->excerpt }}
+                                    </p>
+                                    <a href="{{ route('blog.detail', $blog->slug) }}"
+                                        class="text-sm font-bold text-primary hover:text-gold transition-smooth flex items-center gap-2">
+                                        Read More
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M5 12h14" />
+                                            <path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+
             <!-- CONTACT -->
             <section id="contact" class="bg-background py-24 overflow-hidden">
                 <div class="container-px mx-auto max-w-7xl">
@@ -462,26 +523,26 @@
                             <form action="#" method="POST" class="grid gap-6">
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div class="space-y-2">
-                                        <label for="name" class="text-sm font-semibold text-primary">Nama
-                                            Lengkap</label>
+                                        <label for="name" class="text-sm font-semibold text-primary">Name</label>
                                         <input type="text" id="name" name="name" placeholder="John Doe"
                                             class="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-gold focus:border-gold transition-smooth outline-none">
                                     </div>
                                     <div class="space-y-2">
                                         <label for="email" class="text-sm font-semibold text-primary">Email
-                                            Bisnis</label>
+                                        </label>
                                         <input type="email" id="email" name="email" placeholder="john@company.com"
                                             class="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-gold focus:border-gold transition-smooth outline-none">
                                     </div>
                                 </div>
                                 <div class="space-y-2">
-                                    <label for="subject" class="text-sm font-semibold text-primary">Subjek Pesan</label>
+                                    <label for="subject" class="text-sm font-semibold text-primary">Message
+                                        Subject</label>
                                     <input type="text" id="subject" name="subject"
                                         placeholder="FOB Price Quotation Request"
                                         class="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-gold focus:border-gold transition-smooth outline-none">
                                 </div>
                                 <div class="space-y-2">
-                                    <label for="message" class="text-sm font-semibold text-primary">Pesan Anda</label>
+                                    <label for="message" class="text-sm font-semibold text-primary">Message</label>
                                     <textarea id="message" name="message" rows="4"
                                         placeholder="Please specify your required volume and shipment destination..."
                                         class="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-gold focus:border-gold transition-smooth outline-none resize-none"></textarea>
@@ -532,6 +593,7 @@
                         <li><a href="#about" class="hover:text-gold transition-smooth">About Us</a></li>
                         <li><a href="#products" class="hover:text-gold transition-smooth">Product</a></li>
                         <li><a href="#gallery" class="hover:text-gold transition-smooth">Gallery</a></li>
+                        <li><a href="#blog" class="hover:text-gold transition-smooth">Blog</a></li>
                         <li><a href="#contact" class="hover:text-gold transition-smooth">Contact</a></li>
                     </ul>
                 </div>
