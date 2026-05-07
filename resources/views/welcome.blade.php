@@ -285,9 +285,9 @@
             <section id="testimonials" class="py-24 bg-cream border-y border-border">
                 <div class="container-px mx-auto max-w-7xl">
                     <div class="text-center max-w-3xl mx-auto mb-16">
-                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Testimoni</span>
+                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['testimonials_badge'] ?? 'Testimoni' }}</span>
                         <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary">
-                            Kemitraan yang tumbuh bersama.
+                            {{ $settings['testimonials_title'] ?? 'Kemitraan yang tumbuh bersama.' }}
                         </h2>
                     </div>
 

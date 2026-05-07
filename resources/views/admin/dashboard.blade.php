@@ -274,6 +274,21 @@
 
                     <!-- Testimonials Tab -->
                     <div class="tab-pane fade" id="navs-testimonials" role="tabpanel">
+                        <form action="{{ route('admin.settings.update') }}" method="POST" class="mb-5 border-bottom pb-4">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Badge Section (Testimoni)</label>
+                                    <input type="text" name="settings[testimonials_badge]" class="form-control" value="{{ $settings->where('key', 'testimonials_badge')->first()->value ?? 'Testimoni' }}">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Title Section</label>
+                                    <input type="text" name="settings[testimonials_title]" class="form-control" value="{{ $settings->where('key', 'testimonials_title')->first()->value ?? 'Kemitraan yang tumbuh bersama.' }}">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Update Header</button>
+                        </form>
+
                         <div class="d-flex justify-content-between mb-3">
                             <h5>Testimonials List</h5>
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addTestimonialModal">+ Add Testimonial</button>
