@@ -24,15 +24,7 @@
         <header class="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
             <div class="container-px mx-auto flex h-16 max-w-7xl items-center justify-between">
                 <a href="/" class="flex items-center gap-2 group">
-                    <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-emerald shadow-soft">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="text-primary-foreground">
-                            <path
-                                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-                        </svg>
-                    </span>
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-16 md:h-24 w-auto mt-2">
                     <span class="font-display text-xl font-semibold text-primary">
                         Alam Herbal <span class="text-gold">Nusantara</span>
                     </span>
@@ -285,7 +277,8 @@
             <section id="testimonials" class="py-24 bg-cream border-y border-border">
                 <div class="container-px mx-auto max-w-7xl">
                     <div class="text-center max-w-3xl mx-auto mb-16">
-                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['testimonials_badge'] ?? 'Testimoni' }}</span>
+                        <span
+                            class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{{ $settings['testimonials_badge'] ?? 'Testimoni' }}</span>
                         <h2 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-primary">
                             {{ $settings['testimonials_title'] ?? 'Kemitraan yang tumbuh bersama.' }}
                         </h2>
@@ -569,15 +562,7 @@
             <div class="container-px mx-auto max-w-7xl py-16 grid gap-12 md:grid-cols-4">
                 <div class="md:col-span-2">
                     <a href="/" class="flex items-center gap-2">
-                        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-                            </svg>
-                        </span>
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-16 md:h-24 w-auto">
                         <span class="font-display text-xl font-semibold">
                             Alam Herbal <span class="text-gold">Nusantara</span>
                         </span>
