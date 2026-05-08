@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index'])->name('welcome');
 Route::get('/product/{slug}', [CmsController::class, 'showProduct'])->name('product.detail');
 Route::get('/blog/{slug}', [LandingPageController::class, 'showBlog'])->name('blog.detail');
+Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 
 Route::prefix('admin')
     ->middleware('auth')

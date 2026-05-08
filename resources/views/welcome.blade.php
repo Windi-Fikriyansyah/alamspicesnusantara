@@ -7,12 +7,44 @@
     <title>{{ $settings['site_name'] ?? 'Alam Herbal Nusantara' }} — {{ $settings['site_tagline'] ?? 'Ekspor Rempah' }}
     </title>
     <meta name="description" content="{{ $settings['site_description'] ?? '' }}">
+    <meta name="keywords"
+        content="ekspor rempah, rempah indonesia, supplier rempah, {{ $settings['site_name'] ?? 'Alam Herbal Nusantara' }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="{{ $settings['site_name'] ?? '' }} — Ekspor Premium">
-    <meta property="og:description" content="{{ $settings['site_description'] ?? '' }}">
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title"
+        content="{{ $settings['site_name'] ?? '' }} — {{ $settings['site_tagline'] ?? 'Ekspor Premium' }}">
+    <meta property="og:description" content="{{ $settings['site_description'] ?? '' }}">
     <meta property="og:image" content="{{ asset($hero->image ?? 'images/hero-plantation.jpg') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title"
+        content="{{ $settings['site_name'] ?? '' }} — {{ $settings['site_tagline'] ?? 'Ekspor Premium' }}">
+    <meta property="twitter:description" content="{{ $settings['site_description'] ?? '' }}">
+    <meta property="twitter:image" content="{{ asset($hero->image ?? 'images/hero-plantation.jpg') }}">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "Organization",
+      "name": "{{ $settings['site_name'] ?? 'Alam Herbal Nusantara' }}",
+      "url": "{{ url('/') }}",
+      "logo": "{{ asset('images/logo.png') }}",
+      "contactPoint": {
+        "@@type": "ContactPoint",
+        "telephone": "{{ $settings['contact_phone'] ?? '+62 857-1493-2577' }}",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -24,7 +56,9 @@
         <header class="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
             <div class="container-px mx-auto flex h-16 max-w-7xl items-center justify-between">
                 <a href="/" class="flex items-center gap-2 group">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-16 md:h-24 w-auto mt-2">
+                    <img src="{{ asset('images/logo.png') }}"
+                        alt="Logo {{ $settings['site_name'] ?? 'Alam Herbal Nusantara' }}"
+                        class="h-16 md:h-24 w-auto mt-2">
                     <span class="font-display text-xl font-semibold text-primary">
                         Alam Herbal <span class="text-gold">Nusantara</span>
                     </span>
@@ -45,7 +79,7 @@
                 </nav>
 
                 <div class="hidden md:block">
-                    <a href="#"
+                    <a href="https://wa.me/6285714932577" target="_blank" rel="noopener noreferrer"
                         class="btn btn-hero btn-default-size">{{ $hero->primary_button_text ?? 'Hubungi Kami' }}</a>
                 </div>
 
@@ -81,7 +115,8 @@
                         class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Blog</a>
                     <a href="#contact"
                         class="px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-accent transition-smooth">Contact</a>
-                    <a href="#" class="btn btn-hero btn-lg mt-2">{{ $hero->primary_button_text ?? 'Contact Us' }}</a>
+                    <a href="https://wa.me/6285714932577" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-hero btn-lg mt-2">{{ $hero->primary_button_text ?? 'Contact Us' }}</a>
                 </div>
             </nav>
         </header>
@@ -116,7 +151,8 @@
                         {{ $hero->description ?? '' }}
                     </p>
                     <div class="mt-10 flex flex-wrap gap-4">
-                        <a href="#" class="btn btn-gold btn-xl">
+                        <a href="https://wa.me/6285714932577" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-gold btn-xl">
                             {{ $hero->primary_button_text ?? 'Hubungi Kami' }}
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -367,7 +403,8 @@
                             <p class="mt-5 text-primary-foreground/80 leading-relaxed max-w-md">
                                 {{ $settings['logistics_description'] ?? 'Tim ekspor kami menangani dokumentasi, fumigasi, dan pengapalan—FOB hingga DDP. Sampaikan kebutuhan Anda, kami siapkan penawaran dalam 24 jam.' }}
                             </p>
-                            <a href="#" class="btn btn-gold btn-lg mt-8">
+                            <a href="https://wa.me/6285714932577" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-gold btn-lg mt-8">
                                 {{ $settings['logistics_button_text'] ?? 'Mulai Berdagang' }}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -513,7 +550,20 @@
 
                         <!-- Contact Form -->
                         <div class="bg-cream rounded-3xl p-8 md:p-10 shadow-elegant border border-border/50">
-                            <form action="#" method="POST" class="grid gap-6">
+                            @if(session('success'))
+                                <div class="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
+                            @if(session('error'))
+                                <div class="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm font-medium">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+
+                            <form action="{{ route('contact.send') }}" method="POST" class="grid gap-6">
+                                @csrf
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div class="space-y-2">
                                         <label for="name" class="text-sm font-semibold text-primary">Name</label>

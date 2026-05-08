@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Login Alam Herbal nusantasi</title>
+    <title>Login Alam Herbal Nusantara</title>
 
     <meta name="description" content="" />
 
@@ -77,7 +77,7 @@
               <div class="app-brand justify-content-center">
                 <a href="/" class="app-brand-link gap-2">
                   
-                  <span class="app-brand-text demo text-body fw-bolder">Alam Herbal nusantasi</span>
+                  <span class="app-brand-text demo text-body fw-bolder">Alam Herbal Nusantara</span>
                 </a>
               </div>
               
